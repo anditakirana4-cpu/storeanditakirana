@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OceanTaste Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f0f9ff;
+    color:#123b56;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:17px 7%;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #cfe8f5;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    color:#075985;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.nav a{
+    text-decoration:none;
+    color:#315d74;
+    font-weight:bold;
+}
+
+.cart-btn{
+    border:none;
+    background:#0284c7;
+    color:white;
+    padding:11px 17px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cart-btn:hover{
+    background:#0369a1;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:650px;
+    padding:80px 7%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+
+    background:
+    radial-gradient(circle at top right,#bae6fd 0,transparent 30%),
+    linear-gradient(135deg,#e0f7ff,#dff4ff,#f0faff);
+}
+
+.hero-small{
+    color:#0284c7;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(45px,6vw,75px);
+    line-height:1;
+    color:#083b56;
+}
+
+.hero h1 span{
+    color:#0ea5e9;
+}
+
+.hero p{
+    margin-top:22px;
+    max-width:570px;
+    line-height:1.8;
+    color:#527084;
+    font-size:17px;
+}
+
+.hero-buttons{
+    margin-top:30px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn-primary{
+    display:inline-block;
+    text-decoration:none;
+    background:#0284c7;
+    color:white;
+    padding:14px 24px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.btn-secondary{
+    display:inline-block;
+    text-decoration:none;
+    border:2px solid #0284c7;
+    color:#0284c7;
+    padding:12px 23px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.hero-image img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    border-radius:25px;
+    box-shadow:18px 18px 0 #93d8f5;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    padding:80px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title small{
+    color:#0284c7;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    margin-top:8px;
+    font-family:Georgia,serif;
+    font-size:42px;
+    color:#0b405d;
+}
+
+.section-title p{
+    margin-top:10px;
+    color:#668497;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+    max-width:650px;
+    margin:0 auto 40px;
+}
+
+.search-box input{
+    width:100%;
+    padding:16px 22px;
+    border:2px solid #bae6fd;
+    border-radius:30px;
+    outline:none;
+    font-size:16px;
+    background:white;
+}
+
+.search-box input:focus{
+    border-color:#0ea5e9;
+}
+
+/* ================= CATEGORY ================= */
+
+.category{
+    margin-top:30px;
+}
+
+.category-title{
+    margin-bottom:25px;
+    color:#075985;
+    font-size:28px;
+    font-family:Georgia,serif;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+/* ================= PRODUCT ================= */
+
+.product{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid #d7edf7;
+    transition:.3s;
+    box-shadow:0 8px 25px rgba(2,132,199,.08);
+}
+
+.product:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px rgba(2,132,199,.18);
+}
+
+.product-image{
+    height:230px;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.product:hover img{
+    transform:scale(1.06);
+}
+
+.badge{
+    position:absolute;
+    left:14px;
+    top:14px;
+    background:#e0f7ff;
+    color:#0369a1;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.product-content{
+    padding:22px;
+}
+
+.product-content h3{
+    font-family:Georgia,serif;
+    font-size:22px;
+    color:#0b405d;
+}
+
+.product-content p{
+    color:#668497;
+    margin-top:9px;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.price{
+    margin:17px 0;
+    color:#0284c7;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.add-button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#0284c7,#38bdf8);
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add-button:hover{
+    background:#0369a1;
+}
+
+/* ================= PROMO ================= */
+
+.promo{
+    margin:0 7% 70px;
+    padding:35px 40px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#075985,#0ea5e9);
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.promo h2{
+    font-family:Georgia,serif;
+    font-size:30px;
+}
+
+.promo p{
+    margin-top:8px;
+    color:#dff6ff;
+}
+
+.promo-price{
+    font-size:35px;
+    font-weight:bold;
+    color:#dff6ff;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    background:#dff4ff;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.about-box{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    border:1px solid #cceaf7;
+    text-align:center;
+}
+
+.about-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.about-box h3{
+    margin-bottom:10px;
+    color:#075985;
+}
+
+.about-box p{
+    color:#617d8d;
+    line-height:1.7;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#063650;
+    color:white;
+    text-align:center;
+    padding:40px 7%;
+}
+
+footer h2{
+    font-family:Georgia,serif;
+}
+
+footer p{
+    margin-top:8px;
+    color:#bde5f5;
+}
+
+/* ================= CART ================= */
+
+.cart{
+    position:fixed;
+    top:0;
+    right:-450px;
+    width:min(430px,95%);
+    height:100vh;
+    background:white;
+    z-index:2000;
+    padding:25px;
+    box-shadow:-10px 0 30px #0003;
+    transition:.35s;
+    overflow-y:auto;
+}
+
+.cart.active{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:18px;
+    border-bottom:1px solid #dceef7;
+}
+
+.cart-header h2{
+    font-family:Georgia,serif;
+    color:#075985;
+}
+
+.close-cart{
+    border:none;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#e0f2fe;
+    color:#0369a1;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.cart-item{
+    padding:18px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item h4{
+    color:#075985;
+    margin-bottom:5px;
+}
+
+.cart-item p{
+    color:#0284c7;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.quantity button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:7px;
+    background:#dff4ff;
+    color:#0369a1;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.quantity .delete{
+    margin-left:auto;
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.total{
+    margin-top:25px;
+    padding:20px;
+    background:#effaff;
+    border-radius:15px;
+}
+
+.total h2{
+    color:#0284c7;
+    margin-top:5px;
+}
+
+.checkout{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#16a34a;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.checkout:hover{
+    background:#15803d;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    .nav a{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .menu{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .promo{
+        flex-direction:column;
+        text-align:center;
+        gap:20px;
+    }
+}
+
+@media(max-width:550px){
+
+    .navbar{
+        padding:15px 5%;
+    }
+
+    .hero,
+    .section{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .hero-image img{
+        height:300px;
+    }
+
+    .menu{
+        grid-template-columns:1fr;
+    }
+
+    .promo{
+        margin-left:5%;
+        margin-right:5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        Ocean<span>Taste</span> 🌊
+    </div>
+
+    <div class="nav">
+
+        <a href="#home">Home</a>
+        <a href="#produk">Produk</a>
+        <a href="#about">Tentang</a>
+
+        <button class="cart-btn" onclick="openCart()">
+            🛒 Keranjang
+            (<span id="cartCount">0</span>)
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <div class="hero-small">
+            ONLINE STORE • 2026
+        </div>
+
+        <h1>
+            Welcome to<br>
+            <span>OceanTaste</span>
+        </h1>
+
+        <p>
+            Selamat datang di OceanTaste! 
+            Temukan berbagai pilihan produk dalam
+            satu toko online, mulai dari katalog ikan
+            paus, jemblem lezat, hingga mie ayam
+            favorit. Pilih produkmu dan masukkan
+            ke keranjang.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#produk" class="btn-primary">
+                Lihat Produk
+            </a>
+
+            <a href="#about" class="btn-secondary">
+                Tentang Toko
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=1000&q=85"
+        alt="Ocean">
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUK ================= -->
+
+<section class="section" id="produk">
+
+    <div class="section-title">
+
+        <small>OCEANTASTE STORE</small>
+
+        <h2>Produk Pilihan</h2>
+
+        <p>
+            Pilih produk favoritmu dan masukkan
+            ke keranjang belanja.
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+        type="text"
+        id="search"
+        placeholder="🔎 Cari produk..."
+        onkeyup="searchProduct()">
+
+    </div>
+
+
+    <!-- ================= PAUS ================= -->
+
+    <div class="category">
+
+        <h3 class="category-title">
+            🐋 Katalog Ikan Paus
+        </h3>
+
+        <div class="menu">
+
+
+            <div class="product" data-name="Paus Biru">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=800&q=80"
+                    alt="Paus Biru">
+
+                    <span class="badge">
+                        POPULER
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Paus Biru</h3>
+
+                    <p>
+                        Katalog paus biru untuk
+                        kebutuhan tugas sekolah.
+                    </p>
+
+                    <div class="price">
+                        Rp25.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Paus Biru',25000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Paus Bungkuk">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1607153333879-c174d265f1d2?auto=format&fit=crop&w=800&q=80"
+                    alt="Paus Bungkuk">
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Paus Bungkuk</h3>
+
+                    <p>
+                        Katalog paus bungkuk dengan
+                        bentuk sirip yang khas.
+                    </p>
+
+                    <div class="price">
+                        Rp22.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Paus Bungkuk',22000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Paus Sperma">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80"
+                    alt="Paus Sperma">
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Paus Sperma</h3>
+
+                    <p>
+                        Katalog paus sperma dengan
+                        karakteristik kepala yang khas.
+                    </p>
+
+                    <div class="price">
+                        Rp20.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Paus Sperma',20000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Orca">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=800&q=80"
+                    alt="Orca">
+
+                    <span class="badge">
+                        FAVORIT
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Orca</h3>
+
+                    <p>
+                        Katalog orca dengan warna
+                        hitam dan putih yang khas.
+                    </p>
+
+                    <div class="price">
+                        Rp23.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Orca',23000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JEMBLEM ================= -->
+
+    <div class="category">
+
+        <h3 class="category-title">
+            🍠 Jemblem NyamNyam
+        </h3>
+
+        <div class="menu">
+
+
+            <div class="product" data-name="Jemblem Gula Merah">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://cdn.yummy.co.id/content-images/images/20230131/XKeJc5g3eYgPnIpSqnbzdV7pvhAIQWxr-31363735313430303433d41d8cd98f00b204e9800998ecf8427e.jpg?x-oss-process=image%2Fresize%2Cw_800%2Ch_800%2Cm_fixed%2Cx-oss-process%3Dimage%2Fformat%2Cwebp"
+                    alt="Jemblem Gula Merah">
+
+                    <span class="badge">
+                        BEST SELLER
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Jemblem Gula Merah</h3>
+
+                    <p>
+                        Jemblem klasik dengan isian
+                        gula merah yang manis dan legit.
+                    </p>
+
+                    <div class="price">
+                        Rp10.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Jemblem Gula Merah',10000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Jemblem Cokelat">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://cdn.yummy.co.id/content-images/images/20251003/9WvjOCmU5m3IS904UDA7r8bSJgaryOoK-31373539343931343039d41d8cd98f00b204e9800998ecf8427e.jpg?x-oss-process=image%2Fresize%2Cw_800%2Ch_800%2Cm_fixed%2Cx-oss-process%3Dimage%2Fformat%2Cwebp"
+                    alt="Jemblem Cokelat">
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Jemblem Cokelat</h3>
+
+                    <p>
+                        Jemblem dengan isian cokelat
+                        manis dan lezat.
+                    </p>
+
+                    <div class="price">
+                        Rp12.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Jemblem Cokelat',12000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Jemblem Keju">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://image.idntimes.com/post/20201005/fromandroid-7ed37bef1c5a91351835b481ba6df7bd.jpg"
+                    alt="Jemblem Keju">
+
+                    <span class="badge">
+                        NEW
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Jemblem Keju</h3>
+
+                    <p>
+                        Perpaduan singkong dengan
+                        isian keju gurih.
+                    </p>
+
+                    <div class="price">
+                        Rp13.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Jemblem Keju',13000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MIE AYAM ================= -->
+
+    <div class="category">
+
+        <h3 class="category-title">
+            🍜 MieAyamEndyul
+        </h3>
+
+        <div class="menu">
+
+
+            <div class="product" data-name="Mie Ayam Original">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=85"
+                    alt="Mie Ayam Original">
+
+                    <span class="badge">
+                        BEST SELLER
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Mie Ayam Original</h3>
+
+                    <p>
+                        Mie kenyal dengan topping
+                        ayam gurih dan sayuran.
+                    </p>
+
+                    <div class="price">
+                        Rp12.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Mie Ayam Original',12000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Mie Ayam Pentol">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=85"
+                    alt="Mie Ayam Pentol">
+
+                    <span class="badge">
+                        FAVORIT
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Mie Ayam Pentol</h3>
+
+                    <p>
+                        Mie ayam lengkap dengan
+                        tambahan pentol yang kenyal.
+                    </p>
+
+                    <div class="price">
+                        Rp15.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Mie Ayam Pentol',15000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="product" data-name="Mie Ayam Spesial">
+
+                <div class="product-image">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&w=800&q=85"
+                    alt="Mie Ayam Spesial">
+
+                    <span class="badge">
+                        SPECIAL
+                    </span>
+
+                </div>
+
+                <div class="product-content">
+
+                    <h3>Mie Ayam Spesial</h3>
+
+                    <p>
+                        Mie, ayam, pentol dan
+                        topping tambahan.
+                    </p>
+
+                    <div class="price">
+                        Rp18.000
+                    </div>
+
+                    <button
+                    class="add-button"
+                    onclick="addToCart('Mie Ayam Spesial',18000)">
+
+                        + Tambah ke Keranjang
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROMO ================= -->
+
+<div class="promo">
+
+    <div>
+
+        <h2>
+            Banyak Pilihan, Satu Keranjang!
+        </h2>
+
+        <p>
+            Gabungkan produk paus, jemblem,
+            dan mie ayam dalam satu pesanan.
+        </p>
+
+    </div>
+
+    <div class="promo-price">
+        🌊 SHOP NOW
+    </div>
+
+</div>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section about" id="about">
+
+    <div class="section-title">
+
+        <small>OCEANTASTE STORE</small>
+
+        <h2>Tentang Toko</h2>
+
+        <p>
+            Website toko online untuk kebutuhan
+            tugas pembelajaran HTML dan JavaScript.
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🐋
+            </div>
+
+            <h3>Katalog Paus</h3>
+
+            <p>
+                Menampilkan beberapa jenis ikan paus
+                sebagai katalog untuk kebutuhan tugas.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🍠
+            </div>
+
+            <h3>Jemblem NyamNyam</h3>
+
+            <p>
+                Tersedia beberapa pilihan rasa jemblem
+                seperti gula merah, cokelat dan keju.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🍜
+            </div>
+
+            <h3>MieAyamEndyul</h3>
+
+            <p>
+                Pilihan mie ayam original, pentol,
+                dan spesial dengan harga yang berbeda.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🛒
+            </div>
+
+            <h3>Keranjang Belanja</h3>
+
+            <p>
+                Produk dapat ditambahkan ke keranjang,
+                jumlahnya dapat diatur, dan total
+                dihitung otomatis.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                💬
+            </div>
+
+            <h3>Checkout WhatsApp</h3>
+
+            <p>
+                Pesanan dapat dikirim langsung
+                ke WhatsApp menggunakan format
+                pesan otomatis.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                📱
+            </div>
+
+            <h3>Responsive</h3>
+
+            <p>
+                Website dapat digunakan melalui
+                HP, tablet, maupun komputer.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>🌊 OceanTaste Store</h2>
+
+    <p>
+        IwakPaus • JemblemNyamNyam • MieAyamEndyul
+    </p>
+
+    <p>
+        © 2026 OceanTaste Store
+    </p>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart" id="cart">
+
+    <div class="cart-header">
+
+        <h2>🛒 Keranjang</h2>
+
+        <button
+        class="close-cart"
+        onclick="closeCart()">
+
+            ✕
+
+        </button>
+
+    </div>
+
+
+    <div id="cartItems">
+
+        <p style="margin-top:20px;">
+            Keranjang masih kosong.
+        </p>
+
+    </div>
+
+
+    <div class="total">
+
+        <p>Total Pesanan</p>
+
+        <h2 id="total">
+            Rp0
+        </h2>
+
+    </div>
+
+
+    <button
+    class="checkout"
+    onclick="checkout()">
+
+        💬 Checkout via WhatsApp
+
+    </button>
+
+</div>
+
+
+<script>
+
+let cart = [];
+
+
+/* ================= TAMBAH CART ================= */
+
+function addToCart(name,price){
+
+    let existing =
+        cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.qty++;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            qty:1
+        });
+
+    }
+
+    updateCart();
+    openCart();
+}
+
+
+/* ================= UPDATE CART ================= */
+
+function updateCart(){
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const totalElement =
+        document.getElementById("total");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+    let count = 0;
+
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+            <p style="margin-top:20px;">
+                Keranjang masih kosong.
+            </p>
+        `;
+
+    }
+
+
+    cart.forEach((item,index)=>{
+
+        let subtotal =
+            item.price * item.qty;
+
+        total += subtotal;
+        count += item.qty;
+
+
+        cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+            <h4>${item.name}</h4>
+
+            <p>
+                Rp${formatRupiah(item.price)}
+            </p>
+
+            <div class="quantity">
+
+                <button
+                onclick="decrease(${index})">
+                    −
+                </button>
+
+                <b>
+                    ${item.qty}
+                </b>
+
+                <button
+                onclick="increase(${index})">
+                    +
+                </button>
+
+                <button
+                class="delete"
+                onclick="removeItem(${index})">
+                    🗑
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+
+    totalElement.innerText =
+        "Rp" + formatRupiah(total);
+
+    cartCount.innerText =
+        count;
+}
+
+
+/* ================= TAMBAH JUMLAH ================= */
+
+function increase(index){
+
+    cart[index].qty++;
+
+    updateCart();
+}
+
+
+/* ================= KURANG JUMLAH ================= */
+
+function decrease(index){
+
+    if(cart[index].qty > 1){
+
+        cart[index].qty--;
+
+    }else{
+
+        cart.splice(index,1);
+
+    }
+
+    updateCart();
+}
+
+
+/* ================= HAPUS ================= */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+}
+
+
+/* ================= FORMAT RUPIAH ================= */
+
+function formatRupiah(number){
+
+    return number.toLocaleString("id-ID");
+
+}
+
+
+/* ================= OPEN CART ================= */
+
+function openCart(){
+
+    document
+    .getElementById("cart")
+    .classList
+    .add("active");
+
+}
+
+
+/* ================= CLOSE CART ================= */
+
+function closeCart(){
+
+    document
+    .getElementById("cart")
+    .classList
+    .remove("active");
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchProduct(){
+
+    const keyword =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const products =
+        document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        const name =
+            product
+            .dataset
+            .name
+            .toLowerCase();
+
+        if(name.includes(keyword)){
+
+            product.style.display = "block";
+
+        }else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Keranjang masih kosong. Silakan pilih produk terlebih dahulu!"
+        );
+
+        return;
+    }
+
+
+    /*
+    ==========================================
+    GANTI NOMOR WHATSAPP DI BAWAH INI
+    ==========================================
+
+    Contoh:
+    081234567890
+
+    Menjadi:
+    6281234567890
+
+    Jangan menggunakan tanda +
+    */
+
+    const phone =
+        "6283866291788";
+
+
+    let message =
+        "Halo OceanTaste Store! 👋\n\n" +
+        "Saya ingin memesan:\n\n";
+
+
+    let total = 0;
+
+
+    cart.forEach(item => {
+
+        let subtotal =
+            item.price * item.qty;
+
+        total += subtotal;
+
+
+        message +=
+            "🛍️ " +
+            item.name +
+            " x" +
+            item.qty +
+            " = Rp" +
+            formatRupiah(subtotal) +
+            "\n";
+
+    });
+
+
+    message +=
+        "\n💰 Total Pesanan: Rp" +
+        formatRupiah(total);
+
+
+    message +=
+        "\n\nMohon konfirmasi pesanan saya. Terima kasih!";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+
+/* ================= START ================= */
+
+updateCart();
+
+</script>
+
+</body>
+  </html>
